@@ -1,4 +1,4 @@
-{% set version = "2.1.2.1" %}
+{% set version = '2.1.2.2' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Rmixmod_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Rmixmod/Rmixmod_{{ version }}.tar.gz
-  sha256: c2bc5ffbcc0327807467ceaf09b9f490bc233a2934bbf501ac95ca9ae642a477
+  sha256: 1bbc2dfcf770809ba10c8c489b4b5db320ccbd44936a21e0d092bd788854d0cd
 
 build:
   merge_build_host: True  # [win]
@@ -21,9 +21,10 @@ build:
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
-    - {{ compiler('cxx') }}      # [not win]
-    - {{native}}toolchain        # [win]
+    - {{ compiler('c') }}              # [not win]
+    - {{ compiler('m2w64_c') }}        # [win]
+    - {{ compiler('cxx') }}            # [not win]
+    - {{ compiler('m2w64_cxx') }}      # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}sed               # [win]
     - {{posix}}grep              # [win]
@@ -36,12 +37,12 @@ requirements:
     - {{posix}}zip               # [win]
   host:
     - r-base
-    - r-rcpp >=0.8.0
+    - r-rcpp >=0.11.0
     - r-rcppeigen
   run:
     - r-base
     - {{native}}gcc-libs         # [win]
-    - r-rcpp >=0.8.0
+    - r-rcpp >=0.11.0
     - r-rcppeigen
 
 test:
@@ -62,7 +63,7 @@ extra:
     - conda-forge/r
 
 # Package: Rmixmod
-# Version: 2.1.2
+# Version: 2.1.2.2
 # Title: Classification with Mixture Modelling
 # Description: Interface of 'MIXMOD' software for supervised, unsupervised and semi-supervised classification with mixture modelling.
 # Authors@R: c( person("Florent", "Langrognet", role="aut", email="florent.langrognet@univ-fcomte.fr"), person("Remi", "Lebret", role="aut", email="remi@lebret.ch"), person("Christian", "Poli", role="aut", email="christian.poli@inria.fr"), person("Serge", "Iovleff", role="aut", email="serge.iovleff@univ-lille1.fr"), person("Benjamin", "Auder", role=c("aut","cre"), email="benjamin.auder@u-psud.fr"), person("Parmeet", "Bhatia", role="ctb", email="parmeet.bhatia@inria.fr"), person("Anwuli", "Echenim", role="ctb", email="anwuli.echenim@inria.fr"), person("Serge", "Iovleff", role="aut", email="serge.iovleff@univ-lille1.fr"), person("Christophe", "Biernacki", role="ctb", email="christophe.biernacki@math.univ-lille1.fr"), person("Gilles", "Celeux", role="ctb", email="gilles.celeux@math.u-psud.fr"), person("G<c3><a9>rard", "Govaert", role="ctb", email="gerard.govaert@utc.fr"))
@@ -77,11 +78,13 @@ extra:
 # Type: Package
 # LazyLoad: yes
 # Imports: methods
-# Depends: R(>= 2.12.0), Rcpp(>= 0.8.0)
+# Depends: R(>= 2.12.0), Rcpp(>= 0.11.0)
 # Collate: 'A_NAMESPACE.R' 'global.R' 'Model.R' 'MultinomialModel.R' 'GaussianModel.R' 'CompositeModel.R' 'Parameter.R' 'MultinomialParameter.R' 'GaussianParameter.R' 'CompositeParameter.R' 'MixmodResults.R' 'Mixmod.R' 'Strategy.R' 'MixmodCluster.R' 'MixmodDAResults.R' 'MixmodLearn.R' 'MixmodPredict.R' 'MixmodXml.R' 'Rmixmod.R' 'zzz.R'
 # RoxygenNote: 5.0.1
-# Packaged: 2018-06-19 14:02:41 UTC; auder
+# Packaged: 2019-03-11 07:19:59 UTC; hornik
 # Author: Florent Langrognet [aut], Remi Lebret [aut], Christian Poli [aut], Serge Iovleff [aut], Benjamin Auder [aut, cre], Parmeet Bhatia [ctb], Anwuli Echenim [ctb], Serge Iovleff [aut], Christophe Biernacki [ctb], Gilles Celeux [ctb], G<c3><a9>rard Govaert [ctb]
-# Maintainer: Benjamin Auder <benjamin.auder@u-psud.fr>
+# Maintainer: ORPHANED
 # Repository: CRAN
-# Date/Publication: 2018-06-21 18:07:56 UTC
+# Date/Publication: 2019-03-11 07:30:40 UTC
+# X-CRAN-Original-Maintainer: Benjamin Auder <benjamin.auder@u-psud.fr>
+# X-CRAN-Comment: Orphaned and corrected on 2019-03-02 as check issues were not corrected despite reminder.
