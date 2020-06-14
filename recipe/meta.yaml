@@ -1,4 +1,4 @@
-{% set version = "2.1.4" %}
+{% set version = "2.1.5" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/Rmixmod_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/Rmixmod/Rmixmod_{{ version }}.tar.gz
-  sha256: 7d03a25116b31a3b665ef7f228c66d66b9c5f3974c0163ea9c073d4feb4e319f
+  sha256: 32a8d4e2f07a9e2bc0284cb5234ee1946bfcf3c60f69253e974b91520e5d8032
 
 build:
   merge_build_host: true  # [win]
