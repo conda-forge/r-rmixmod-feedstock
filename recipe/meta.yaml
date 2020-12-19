@@ -52,7 +52,7 @@ test:
 
 about:
   home: http://www.mixmod.org
-  license: GPL-3
+  license: GPL-3.0-only
   summary: Interface of 'MIXMOD' software for supervised, unsupervised and semi-supervised classification with mixture modelling.
   license_family: GPL3
   license_file: {{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-3
