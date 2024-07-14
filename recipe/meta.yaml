@@ -1,6 +1,5 @@
 {% set version = "2.1.10" %}
 {% set posix = 'm2-' if win else '' %}
-{% set native = 'm2w64-' if win else '' %}
 
 package:
   name: r-rmixmod
@@ -13,8 +12,7 @@ source:
   sha256: 96d592c36a456ab744b5e885dbbc929e4d1d2a5f4d8489c9c224fe353f0af189
 
 build:
-  merge_build_host: true  # [win]
-  number: 0
+  number: 1
   skip: true  # [osx]
   rpaths:
     - lib/R/lib/
@@ -23,7 +21,9 @@ build:
 requirements:
   build:
     - {{ compiler('c') }}              # [not win]
+    - {{ stdlib("c") }}                # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
+    - {{ stdlib("m2w64_c") }}          # [win]
     - {{ compiler('cxx') }}            # [not win]
     - {{ compiler('m2w64_cxx') }}      # [win]
     - {{ posix }}filesystem        # [win]
@@ -42,7 +42,6 @@ requirements:
     - r-rcppeigen
   run:
     - r-base
-    - {{ native }}gcc-libs         # [win]
     - r-rcpp >=0.11.0
     - r-rcppeigen
 
