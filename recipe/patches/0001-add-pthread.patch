@@ -1,0 +1,22 @@
+From ee161e8a318f2b7439e0da83cd4b55a2174211a6 Mon Sep 17 00:00:00 2001
+From: Mervin Fansler <mervin.fansler@bric.ku.dk>
+Date: Mon, 9 Sep 2024 14:16:40 +0200
+Subject: [PATCH] add pthread
+
+---
+ src/Makevars.win | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Makevars.win b/src/Makevars.win
+index a85da8e..5feed70 100644
+--- a/src/Makevars.win
++++ b/src/Makevars.win
+@@ -15,7 +15,7 @@ MIXMODLIB    = mixmod.a
+ 
+ PKG_CXXFLAGS = -DWITHOUT_OMP -DXEM_RESOURCES_PATH='"$(R_PACKAGE_DIR)/XML_specs"' $(RMIXMOD_XML) -I. -I./mixmod_iostream $(LIBXMLXX_CFLAGS) #-I$(EIGENDIR)
+ ## Use the R_HOME indirection to support installations of multiple R version
+-PKG_LIBS = `$(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()"` -L$(MIXMODDIR) $(MIXMODLIB) $(LIBXMLXX_LIBS)
++PKG_LIBS = `$(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()"` -L$(MIXMODDIR) $(MIXMODLIB) $(LIBXMLXX_LIBS) -pthread
+ 
+ ##
+ ## Targets
